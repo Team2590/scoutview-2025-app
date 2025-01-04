@@ -1,0 +1,41 @@
+$primary: #dc3545;
+$secondary: #ff5555;
+$info: #850505;
+$success: #28a745;
+$enable-negative-margins: true;
+
+@import '../../node_modules/bootstrap/scss/functions';
+@import '../../node_modules/bootstrap/scss/variables';
+
+@font-face {
+	font-family: 'lato';
+	src: url('../fonts/lato-regular.woff2') format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+$custom-colors: (
+	'tertiary': #485058,
+	'field': #ff9900
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+.input-row {
+	max-width: 800px;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: row;
+}
+
+.field-button {
+	height: 28px !important;
+	width: 28px !important ;
+	border-radius: 50% !important;
+}
+
+* {
+	font-family: 'Lato', sans-serif;
+}
+
+@import '../../node_modules/bootstrap/scss/bootstrap.scss';

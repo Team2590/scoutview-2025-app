@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">scoutview-2024</string>
+    <string name="title_activity_main">scoutview-2024</string>
+    <string name="package_name">com.scoutview2024.app</string>
+    <string name="custom_url_scheme">com.scoutview2024.app</string>
+</resources>
