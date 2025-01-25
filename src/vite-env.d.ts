@@ -20,3 +20,8 @@ interface Data {
     timeTakenToClimb: number
     lostComms: boolean
 }
+
+enum Alliance {
+    RED = 1,
+    BLUE = 2,
+}

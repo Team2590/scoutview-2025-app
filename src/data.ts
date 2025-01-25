@@ -22,4 +22,6 @@ export const defaultData: Data = {
 }
 
 export const dataAtom = atomWithStorage('nemesis-data', defaultData)
+export const allianceAtom = atomWithStorage('nemesis-alliance', Alliance.RED);
 export const useData = () => useAtom(dataAtom)
+export const useAlliance = () => useAtom(allianceAtom);
