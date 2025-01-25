@@ -21,6 +21,11 @@ export const defaultData: Data = {
     lostComms: false
 }
 
+export enum Alliance {
+    RED = 1,
+    BLUE = 2
+}
+
 export const dataAtom = atomWithStorage('nemesis-data', defaultData)
 export const allianceAtom = atomWithStorage('nemesis-alliance', Alliance.RED)
 export const useData = () => useAtom(dataAtom)
