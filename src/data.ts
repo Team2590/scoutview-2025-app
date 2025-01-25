@@ -15,13 +15,13 @@ export const defaultData: Data = {
     teleopCoralL2: 0,
     teleopCoralL3: 0,
     teleopCoralL4: 0,
-    teleopTimeTakenToClimb: 0,
+    timeTakenToClimb: 0,
     teleopProcessorAlgae: 0,
     teleopNetAlgae: 0,
     lostComms: false
 }
 
 export const dataAtom = atomWithStorage('nemesis-data', defaultData)
-export const allianceAtom = atomWithStorage('nemesis-alliance', Alliance.RED);
+export const allianceAtom = atomWithStorage('nemesis-alliance', Alliance.RED)
 export const useData = () => useAtom(dataAtom)
-export const useAlliance = () => useAtom(allianceAtom);
+export const useAlliance = () => useAtom(allianceAtom)
