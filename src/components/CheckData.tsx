@@ -2,24 +2,23 @@ import { useMemo } from 'react'
 import { useData } from '../data'
 import { useNavigate } from 'react-router-dom'
 
-
 export default function CheckData() {
     const [data] = useData()
     const navigate = useNavigate()
 
     const required = useMemo(() => {
         const map = new Map()
-        map.set('matchNum', true)
-        map.set('teamNum', true)
-        map.set('scoutName', true)
-        map.set('startingPos', true)
-        map.set('leaveWing', true)
-        map.set('coopertition', true)
-        map.set('climbLvl', true)
-        map.set('trap', true)
-        map.set('traverse', true)
-        map.set('twoRobot', true)
-        map.set('droppedHit', true)
+        // map.set('matchNum', true)
+        // map.set('teamNum', true)
+        // map.set('scoutName', true)
+        // map.set('startingPos', true)
+        // map.set('leaveWing', true)
+        // map.set('coopertition', true)
+        // map.set('climbLvl', true)
+        // map.set('trap', true)
+        // map.set('traverse', true)
+        // map.set('twoRobot', true)
+        // map.set('droppedHit', true)
         return map
     }, [])
 

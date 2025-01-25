@@ -16,7 +16,11 @@ export default function GetMatch() {
 
     return (
         <SectionWrapper label='Get Match'>
-            <p>get match</p>
+            <div className='d-flex flex-column gap-4 mx-auto mt-5 container'>
+                <TextInput property='scoutName' label='Scout Name' />
+                <TextInput property='teamNum' label='Team Number' />
+                <TextInput property='matchNum' label='Match Number' />
+            </div>
         </SectionWrapper>
     )
 }
