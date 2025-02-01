@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useLocalStorage } from '../hooks/useLocalStorage'
-import { useData } from '../data'
+import { useAlliance, useData } from '../data'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 const fetcher = async (url: string) => {
@@ -28,6 +28,7 @@ export default function SettingsPage() {
     const [haveTeams, setHaveTeams] = useLocalStorage('have-teams', false)
     const navigate = useNavigate()
     const { updateServiceWorker } = useRegisterSW()
+    const [alliance, setAlliance] = useAlliance()
 
     useEffect(() => {
         if (autoIncrementMatches && data.matchNum == '') {
@@ -114,7 +115,7 @@ export default function SettingsPage() {
     return (
         <>
             <div className='ms-2 mt-1'>
-                <Link to='/' className='text-decoration-none'> &#8592; Back</Link>
+                <Link to='/' className='text-decoration-none link-light'> &#8592; Back</Link>
             </div>
             <div className='d-flex justify-content-center align-items-center' style={{ minHeight: 'calc(100vh - 28px)' }}>
                 <div className='card mx-auto' style={{ width: 376 }}>

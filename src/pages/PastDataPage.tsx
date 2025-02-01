@@ -6,7 +6,7 @@ export default function PastDataPage() {
     return (
         <>
             <div className='ms-2 mt-1'>
-                <Link to='/' className='text-decoration-none'> &#8592; Back</Link>
+                <Link to='/' className='text-decoration-none link-light'> &#8592; Back</Link>
             </div>
             <div className='d-flex flex-column'>
                 {localStorage.getItem('nemesis-past-data') && JSON.parse(localStorage.getItem('nemesis-past-data')!).reverse().map((data: Data) => {

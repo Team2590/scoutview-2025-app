@@ -1,4 +1,4 @@
-import { useAtom } from 'jotai'
+import { atom, useAtom } from 'jotai'
 import { atomWithStorage } from "jotai/utils"
 
 export const defaultData: Data = {
@@ -27,6 +27,6 @@ export enum Alliance {
 }
 
 export const dataAtom = atomWithStorage('nemesis-data', defaultData)
-export const allianceAtom = atomWithStorage('nemesis-alliance', Alliance.RED)
+export const allianceAtom = atomWithStorage('alliance', Alliance.RED)
 export const useData = () => useAtom(dataAtom)
 export const useAlliance = () => useAtom(allianceAtom)

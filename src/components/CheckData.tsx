@@ -1,10 +1,11 @@
 import { useMemo } from 'react'
-import { useData } from '../data'
+import { Alliance, useAlliance, useData } from '../data'
 import { useNavigate } from 'react-router-dom'
 
 export default function CheckData() {
     const [data] = useData()
     const navigate = useNavigate()
+    const [alliance] = useAlliance()
 
     const required = useMemo(() => {
         const map = new Map()
@@ -27,9 +28,9 @@ export default function CheckData() {
     return (
         <>
             <div className='btn-group mx-auto'>
-                <button className='btn btn-primary' onClick={() => navigate('/past-data')}>Past Data</button>
-                <button className='btn btn-primary' data-bs-toggle='modal' data-bs-target='#missingDataModal'>Missing Data</button>
-                <button className='btn btn-primary' onClick={() => navigate('/settings')}>Settings</button>
+                <button className={`btn btn-${alliance == Alliance.RED ? 'primary' : 'blue-alliance'}`} onClick={() => navigate('/past-data')}>Past Data</button>
+                <button className={`btn btn-${alliance == Alliance.RED ? 'primary' : 'blue-alliance'}`} data-bs-toggle='modal' data-bs-target='#missingDataModal'>Missing Data</button>
+                <button className={`btn btn-${alliance == Alliance.RED ? 'primary' : 'blue-alliance'}`} onClick={() => navigate('/settings')}>Settings</button>
             </div>
 
             <div className='modal fade' id='missingDataModal' tabIndex={-1} aria-labelledby='missingDataModalLabel' aria-hidden='true'>

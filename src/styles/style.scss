@@ -16,7 +16,10 @@ $enable-negative-margins: true;
 
 $custom-colors: (
 	'tertiary': #485058,
-	'field': #ff9900
+	'field': #ff9900,
+	'blue-alliance': #002db4,
+	'blue-alliance-info': #021d6c,
+	'blue-alliance-secondary': #0033cc
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);
