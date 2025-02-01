@@ -20,9 +20,9 @@ export default defineConfig({
                 display: 'standalone',
                 scope: '/',
                 start_url: '/',
-                short_name: 'Scoutview 2024',
-                description: 'Nemesis Scoutview 2024',
-                name: 'Nemesis Scoutview 2024',
+                short_name: 'Scoutview 2025',
+                description: 'Nemesis Scoutview 2025',
+                name: 'Nemesis Scoutview 2025',
                 icons: [
                     {
                         src: '/icon-192x192.png',

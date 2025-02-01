@@ -70,7 +70,7 @@ export default function SettingsPage() {
         if (!navigator.onLine) return alert('You are not connected to the internet')
 
         if (confirm('Download the competition names?')) {
-            const data = await fetcher('https://www.thebluealliance.com/api/v3/team/frc2590/events/2024') as any[]
+            const data = await fetcher('https://www.thebluealliance.com/api/v3/team/frc2590/events/2025') as any[]
             const simplified = data.map(({ name, key }) => {
                 return { name, key }
             })
@@ -129,7 +129,7 @@ export default function SettingsPage() {
                         </div>
                         <div className='d-flex justify-content-evenly'>
                             <button className='btn btn-tertiary mb-3' onClick={resetPastData}>Reset Past Data</button>
-                            <button className='btn btn-tertiary mb-3' onClick={updateApp}>Update App</button>
+                            <button className='btn btn-tertiary mb-3' onClick={updateApp}>Update SW</button>
                         </div>
                         <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
                             <input className='form-check-input' type='checkbox' role='switch' id='auto-increment' checked={autoIncrementMatches} onChange={e => {

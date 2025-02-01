@@ -1,4 +1,4 @@
-package com.scoutview2024.app;
+package com.scoutview2025.app;
 
 import com.getcapacitor.BridgeActivity;
 
