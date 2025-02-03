@@ -28,9 +28,9 @@ export default function CheckData() {
     return (
         <>
             <div className='btn-group mx-auto'>
-                <button className={`btn btn-${alliance == Alliance.RED ? 'primary' : 'blue-alliance'}`} onClick={() => navigate('/past-data')}>Past Data</button>
-                <button className={`btn btn-${alliance == Alliance.RED ? 'primary' : 'blue-alliance'}`} data-bs-toggle='modal' data-bs-target='#missingDataModal'>Missing Data</button>
-                <button className={`btn btn-${alliance == Alliance.RED ? 'primary' : 'blue-alliance'}`} onClick={() => navigate('/settings')}>Settings</button>
+                <button className={`btn btn-${alliance == Alliance.RED ? 'red-alliance' : 'blue-alliance'}-primary`} onClick={() => navigate('/past-data')}>Past Data</button>
+                <button className={`btn btn-${alliance == Alliance.RED ? 'red-alliance' : 'blue-alliance'}-primary`} data-bs-toggle='modal' data-bs-target='#missingDataModal'>Missing Data</button>
+                <button className={`btn btn-${alliance == Alliance.RED ? 'red-alliance' : 'blue-alliance'}-primary`} onClick={() => navigate('/settings')}>Settings</button>
             </div>
 
             <div className='modal fade' id='missingDataModal' tabIndex={-1} aria-labelledby='missingDataModalLabel' aria-hidden='true'>

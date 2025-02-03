@@ -3,6 +3,8 @@ import PastDataPage from './pages/PastDataPage'
 import SettingsPage from './pages/SettingsPage'
 import MainPage from './pages/MainPage'
 import ErrorHandler from './components/ErrorHandler'
+import { Alliance, useAlliance, useData, useRobot } from './data'
+import { useEffect } from 'react'
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -15,6 +17,15 @@ const router = createHashRouter(
 )
 
 export default function App() {
+    const [data] = useData()
+    const [robot] = useRobot()
+    const [_, setAlliance] = useAlliance()
+
+    useEffect(() => {
+        if (robot < 3) setAlliance(Alliance.RED)
+        else setAlliance(Alliance.BLUE)
+    }, [data.matchNum])
+
     return (
         <RouterProvider router={router} />
     )

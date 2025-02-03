@@ -1,6 +1,4 @@
-$primary: #dc3545;
-$secondary: #ff5555;
-$info: #850505;
+$primary: #979797;
 $success: #28a745;
 $enable-negative-margins: true;
 
@@ -17,9 +15,12 @@ $enable-negative-margins: true;
 $custom-colors: (
 	'tertiary': #485058,
 	'field': #ff9900,
-	'blue-alliance': #002db4,
+	'blue-alliance-primary': #002db4,
 	'blue-alliance-info': #021d6c,
-	'blue-alliance-secondary': #0033cc
+	'blue-alliance-secondary': #0033cc,
+	'red-alliance-primary': #dc3545,
+	'red-alliance-secondary': #ff5555,
+	'red-alliance-info': #850505
 );
 
 $theme-colors: map-merge($theme-colors, $custom-colors);

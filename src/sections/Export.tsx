@@ -1,4 +1,4 @@
-import { useData } from '../data'
+import { useAutoAssignTeams, useAutoIncrementMatches, useData, useRobot, useTeams } from '../data'
 import { defaultData } from './../data'
 import SectionWrapper from '../components/SectionWrapper'
 import QRCode from 'react-qr-code'
@@ -7,6 +7,10 @@ import { generateExportArray } from '../util/generateExportArray'
 
 export default function Export() {
     const [data, setData] = useData()
+    const [autoIncrementMatches] = useAutoIncrementMatches()
+    const [autoAssignTeams] = useAutoAssignTeams()
+    const [teams] = useTeams()
+    const [robot] = useRobot()
 
     const storeData = () => {
         const pastData = localStorage.getItem('nemesis-past-data') ? JSON.parse(localStorage.getItem('nemesis-past-data')!) : []
@@ -25,23 +29,23 @@ export default function Export() {
     const resetData = () => {
         if (confirm('Are you sure that you want to clear?')) {
             storeData()
-            if (JSON.parse(localStorage.getItem('auto-increment')!) == true) {
+            if (autoIncrementMatches) {
                 const matchNum = Number(data.matchNum) + 1
-                const teamNum = JSON.parse(localStorage.getItem('auto-assign-teams')!) ? JSON.parse(localStorage.getItem('teams')!)[matchNum - 1][JSON.parse(localStorage.getItem('robot')!) - 1] : ''
+                const teamNum = autoAssignTeams ? teams[matchNum - 1][robot - 1] : ''
                 setData({
                     ...defaultData,
                     scoutName: data.scoutName,
                     matchNum,
                     teamNum
                 })
-            } else[
+            } else {
                 setData({
                     ...defaultData,
                     scoutName: data.scoutName,
                     matchNum: '',
                     teamNum: ''
                 })
-            ]
+            }
         }
     }
 
@@ -56,7 +60,6 @@ export default function Export() {
                     <QRCode
                         value={JSON.stringify(exportData)}
                         bgColor='white'
-                        // fgcolor='black'
                         size={384}
                         style={{ border: '20px solid white' }}
                     />
