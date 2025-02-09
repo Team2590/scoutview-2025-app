@@ -3,7 +3,7 @@ import PastDataPage from './pages/PastDataPage'
 import SettingsPage from './pages/SettingsPage'
 import MainPage from './pages/MainPage'
 import ErrorHandler from './components/ErrorHandler'
-import { Alliance, useAlliance, useData, useRobot } from './data'
+import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useData, useRobot, useTeams } from './data'
 import { useEffect } from 'react'
 
 const router = createHashRouter(
@@ -17,14 +17,25 @@ const router = createHashRouter(
 )
 
 export default function App() {
-    const [data] = useData()
+    const [data, setData] = useData()
     const [robot] = useRobot()
     const [_, setAlliance] = useAlliance()
+    const [autoIncrementMatches] = useAutoIncrementMatches()
+    const [autoAssignTeams] = useAutoAssignTeams()
+    const [teams] = useTeams()
 
     useEffect(() => {
         if (robot < 3) setAlliance(Alliance.RED)
         else setAlliance(Alliance.BLUE)
     }, [data.matchNum, robot])
+
+    useEffect(() => {
+        if (autoIncrementMatches == true && autoAssignTeams == true && data.matchNum != undefined && data.matchNum != '') {
+            setData(prev => {
+                return { ...prev, teamNum: teams[data.matchNum as number - 1][robot] }
+            })
+        }
+    }, [data.matchNum])
 
     return (
         <RouterProvider router={router} />

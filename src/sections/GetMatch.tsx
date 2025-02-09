@@ -5,20 +5,9 @@ import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches, use
 import NameInput from '../components/NameInput'
 
 export default function GetMatch() {
-    const [data, setData] = useData()
-    const [alliance, setAlliance] = useAlliance()
+    const [alliance] = useAlliance()
     const [autoIncrementMatches] = useAutoIncrementMatches()
     const [autoAssignTeams] = useAutoAssignTeams()
-    const [teams] = useTeams()
-    const [robot] = useRobot()
-
-    useEffect(() => {
-        if (autoIncrementMatches == true && autoAssignTeams == true && data.matchNum != undefined && data.matchNum != '') {
-            setData(prev => {
-                return { ...prev, teamNum: teams[data.matchNum as number - 1][robot] }
-            })
-        }
-    }, [data.matchNum])
 
     return (
         <SectionWrapper label='Get Match'>

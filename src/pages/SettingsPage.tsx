@@ -2,6 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useCompName, useCompNames, useData, useFieldFlipped, useHaveTeams, useLocalData, useRobot, useTeams } from '../data'
 import { useRegisterSW } from 'virtual:pwa-register/react'
+import PlusMinus from '../components/PlusMinus'
 
 const fetcher = async (url: string) => {
     return fetch(url,
@@ -108,6 +109,18 @@ export default function SettingsPage() {
         if (confirm('Update service worker?')) updateServiceWorker(true)
     }
 
+    const incrementMatchNum = () => {
+        setData(prev => {
+            return { ...prev, matchNum: Number(prev.matchNum) + 1 }
+        })
+    }
+
+    const decrementMatchNum = () => {
+        setData(prev => {
+            return { ...prev, matchNum: Number(prev.matchNum) > 1 ? Number(prev.matchNum) - 1 : 1 }
+        })
+    }
+
     return (
         <>
             <div className='ms-2 mt-1'>
@@ -127,6 +140,13 @@ export default function SettingsPage() {
                         <div className='d-flex justify-content-evenly'>
                             <button className='btn btn-tertiary mb-3' onClick={resetPastData}>Reset Past Data</button>
                             <button className='btn btn-tertiary mb-3' onClick={updateApp}>Update SW</button>
+                        </div>
+                        <div className='d-flex flex-row align-items-baseline justify-content-center gap-3'>
+                            <p>Match Number: {data.matchNum}</p>
+                            <div className='btn-group'>
+                                <button className='btn btn-tertiary btn-lg' onClick={decrementMatchNum}>-</button>
+                                <button className='btn btn-tertiary btn-lg' onClick={incrementMatchNum}>+</button>
+                            </div>
                         </div>
                         <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
                             <input className='form-check-input' type='checkbox' role='switch' id='field-flipped' checked={fieldFlipped} onChange={e => setFieldFlipped(Boolean(e.target.checked))} />

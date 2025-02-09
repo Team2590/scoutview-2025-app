@@ -30,7 +30,7 @@ export default function Autonomous() {
         <SectionWrapper label='Autonomous'>
             <Field />
             <div className='mt-4'>
-                <SelectInput label='Starting Position' options={['A', 'B', 'C', 'D']} property='startingPos' />
+                <SelectInput label='Starting Position' options={['A', 'B', 'C']} property='startingPos' />
             </div>
             <div className='mx-auto row mt-5 container gap-4'>
                 <div className='col'>

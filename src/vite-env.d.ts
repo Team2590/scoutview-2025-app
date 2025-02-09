@@ -5,7 +5,7 @@ interface Data {
     matchNum: number | ''
     teamNum: number | ''
     scoutName: string
-    startingPos: 'A' | 'B' | 'C' | 'D' | null
+    startingPos: 'A' | 'B' | 'C' | null
     autoCoralL1: number
     autoCoralL2: number
     autoCoralL3: number
