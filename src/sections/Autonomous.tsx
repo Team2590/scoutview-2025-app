@@ -2,6 +2,7 @@ import { useCallback, useLayoutEffect, useState } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
 import PlusMinus from '../components/PlusMinus'
 import SelectInput from '../components/SelectInput'
+import Field from '../components/Field'
 
 export default function Autonomous() {
     const [cols, setCols] = useState(true)
@@ -27,6 +28,7 @@ export default function Autonomous() {
 
     return (
         <SectionWrapper label='Autonomous'>
+            <Field />
             <div className='mt-4'>
                 <SelectInput label='Starting Position' options={['A', 'B', 'C', 'D']} property='startingPos' />
             </div>

@@ -41,6 +41,7 @@ export const compNamesAtom = atomWithStorage('comp-names', [] as CompName[])
 export const compName = atomWithStorage('comp-name', '')
 export const robotAtom = atomWithStorage('robot', 0 as number)
 export const pastDataAtom = atomWithStorage('nemesis-past-data', [] as Data[])
+export const fieldFlippedAtom = atomWithStorage('field-flipped', false)
 export const useData = () => useAtom(dataAtom)
 export const useAlliance = () => useAtom(allianceAtom)
 export const useAutoIncrementMatches = () => useAtom(autoIncrementMatchesAtom)
@@ -65,3 +66,4 @@ export const usePastData = () => {
 
     return [pastData, add] as const
 }
+export const useFieldFlipped = () => useAtom(fieldFlippedAtom)

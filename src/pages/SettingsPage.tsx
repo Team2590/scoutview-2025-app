@@ -1,6 +1,6 @@
 import React, { useCallback, useEffect } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useCompName, useCompNames, useData, useHaveTeams, useLocalData, useRobot, useTeams } from '../data'
+import { useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useCompName, useCompNames, useData, useFieldFlipped, useHaveTeams, useLocalData, useRobot, useTeams } from '../data'
 import { useRegisterSW } from 'virtual:pwa-register/react'
 
 const fetcher = async (url: string) => {
@@ -26,7 +26,7 @@ export default function SettingsPage() {
     const navigate = useNavigate()
     const { updateServiceWorker } = useRegisterSW()
     const [compName, setCompName] = useCompName()
-    const [alliance, setAlliance] = useAlliance()
+    const [fieldFlipped, setFieldFlipped] = useFieldFlipped()
 
     useEffect(() => {
         if (autoIncrementMatches && data.matchNum == '') {
@@ -127,6 +127,10 @@ export default function SettingsPage() {
                         <div className='d-flex justify-content-evenly'>
                             <button className='btn btn-tertiary mb-3' onClick={resetPastData}>Reset Past Data</button>
                             <button className='btn btn-tertiary mb-3' onClick={updateApp}>Update SW</button>
+                        </div>
+                        <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
+                            <input className='form-check-input' type='checkbox' role='switch' id='field-flipped' checked={fieldFlipped} onChange={e => setFieldFlipped(Boolean(e.target.checked))} />
+                            <label className='form-check-label' htmlFor='field-flipped'>Flip field</label>
                         </div>
                         <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
                             <input className='form-check-input' type='checkbox' role='switch' id='auto-increment' checked={autoIncrementMatches} onChange={e => {
