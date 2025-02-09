@@ -40,6 +40,7 @@ export const teamsAtom = atomWithStorage('teams', [] as number[][])
 export const compNamesAtom = atomWithStorage('comp-names', [] as CompName[])
 export const compName = atomWithStorage('comp-name', '')
 export const robotAtom = atomWithStorage('robot', 0 as number)
+export const pastDataAtom = atomWithStorage('nemesis-past-data', [] as Data[])
 export const useData = () => useAtom(dataAtom)
 export const useAlliance = () => useAtom(allianceAtom)
 export const useAutoIncrementMatches = () => useAtom(autoIncrementMatchesAtom)
@@ -50,3 +51,17 @@ export const useTeams = () => useAtom(teamsAtom)
 export const useCompNames = () => useAtom(compNamesAtom)
 export const useRobot = () => useAtom(robotAtom)
 export const useCompName = () => useAtom(compName)
+export const usePastData = () => {
+    const [pastData, setPastData] = useAtom(pastDataAtom)
+
+    const add = (data: Data) => {
+        if (pastData.length >= 5) {
+            const newData = [...pastData.slice(0, 4), data]
+            setPastData(newData)
+        } else {
+            setPastData(prev => [...prev, data])
+        }
+    }
+
+    return [pastData, add] as const
+}

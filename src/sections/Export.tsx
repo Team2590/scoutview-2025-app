@@ -1,9 +1,10 @@
-import { useAutoAssignTeams, useAutoIncrementMatches, useData, useRobot, useTeams } from '../data'
+import { useAutoAssignTeams, useAutoIncrementMatches, useData, usePastData, useRobot, useTeams } from '../data'
 import { defaultData } from './../data'
 import SectionWrapper from '../components/SectionWrapper'
 import QRCode from 'react-qr-code'
 import CheckData from '../components/CheckData'
 import { generateExportArray } from '../util/generateExportArray'
+import { useCallback } from 'react'
 
 export default function Export() {
     const [data, setData] = useData()
@@ -11,24 +12,17 @@ export default function Export() {
     const [autoAssignTeams] = useAutoAssignTeams()
     const [teams] = useTeams()
     const [robot] = useRobot()
+    const [_, add] = usePastData()
 
-    const storeData = () => {
-        const pastData = localStorage.getItem('nemesis-past-data') ? JSON.parse(localStorage.getItem('nemesis-past-data')!) : []
-        const isEmptyData = Object.keys(data).every((key) => {
+    const isDataEmpty = useCallback(() => {
+        return Object.keys(data).every((key) => {
             return data[key as keyof Data] == defaultData[key as keyof Data]
         })
-        if (isEmptyData) return
-        pastData.push(data)
-        if (pastData.length > 10) {
-            localStorage.setItem('nemesis-past-data', JSON.stringify(pastData.slice(1, 11)))
-        } else {
-            localStorage.setItem('nemesis-past-data', JSON.stringify(pastData))
-        }
-    }
+    }, [])
 
-    const resetData = () => {
+    const resetData = useCallback(() => {
         if (confirm('Are you sure that you want to clear?')) {
-            storeData()
+            if (!isDataEmpty()) add(data)
             if (autoIncrementMatches) {
                 const matchNum = Number(data.matchNum) + 1
                 const teamNum = autoAssignTeams ? teams[matchNum - 1][robot - 1] : ''
@@ -47,7 +41,7 @@ export default function Export() {
                 })
             }
         }
-    }
+    }, [])
 
     const exportData = generateExportArray(data)
 
