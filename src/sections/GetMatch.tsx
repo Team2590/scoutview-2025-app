@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
 import TextInput from '../components/TextInput'
 import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useData, useRobot, useTeams } from '../data'
+import NameInput from '../components/NameInput'
 
 export default function GetMatch() {
     const [data, setData] = useData()
@@ -22,9 +23,9 @@ export default function GetMatch() {
     return (
         <SectionWrapper label='Get Match'>
             <div className='d-flex flex-column gap-4 mx-auto mt-5 container'>
-                <TextInput property='scoutName' label='Scout Name' />
-                <TextInput property='teamNum' label='Team Number' />
-                <TextInput property='matchNum' label='Match Number' />
+                <NameInput />
+                <TextInput property='teamNum' label='Team Number' disabled={autoAssignTeams} />
+                <TextInput property='matchNum' label='Match Number' disabled={autoIncrementMatches} />
             </div>
             <div className='text-center'>
                 <p className='display-1 mt-5'>Your Alliance: {alliance == Alliance.RED ? 'RED!' : 'BLUE!'}</p>

@@ -24,7 +24,7 @@ export default function App() {
     useEffect(() => {
         if (robot < 3) setAlliance(Alliance.RED)
         else setAlliance(Alliance.BLUE)
-    }, [data.matchNum])
+    }, [data.matchNum, robot])
 
     return (
         <RouterProvider router={router} />
