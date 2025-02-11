@@ -1,4 +1,4 @@
-import { useAutoAssignTeams, useAutoIncrementMatches, useData, usePastData, useRobot, useTeams } from '../data'
+import { DataSchema, useAutoAssignTeams, useAutoIncrementMatches, useData, usePastData, useRobot, useTeams } from '../data'
 import { defaultData } from './../data'
 import SectionWrapper from '../components/SectionWrapper'
 import QRCode from 'react-qr-code'
@@ -43,7 +43,7 @@ export default function Export() {
         }
     }, [])
 
-    const exportData = generateExportArray(data)
+    const exportData = generateExportArray(DataSchema.parse(data))
 
     console.log(exportData)
 

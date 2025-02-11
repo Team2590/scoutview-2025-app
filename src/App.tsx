@@ -37,6 +37,10 @@ export default function App() {
         }
     }, [data.matchNum])
 
+    useEffect(() => {
+        if (data.scoutName == 'Aryan Gaur') alert('Hello Sigma')
+    }, [data.scoutName])
+
     return (
         <RouterProvider router={router} />
     )

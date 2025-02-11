@@ -1,6 +1,4 @@
 /// <reference types='vite/client' />
-type NoteResult = 'Made' | 'Missed' | 'Not Attempted' | null
-
 interface Data {
     matchNum: number | ''
     teamNum: number | ''
