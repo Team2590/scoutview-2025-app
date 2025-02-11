@@ -16,9 +16,9 @@ export const defaultData: Data = {
     teleopCoralL2: 0,
     teleopCoralL3: 0,
     teleopCoralL4: 0,
-    timeTakenToClimb: 0,
     teleopProcessorAlgae: 0,
     teleopNetAlgae: 0,
+    timeTakenToClimb: 0,
     lostComms: false
 }
 
