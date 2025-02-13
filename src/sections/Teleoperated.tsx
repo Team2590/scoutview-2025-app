@@ -20,6 +20,9 @@ export default function Teleoperated() {
             </div>
             <div className='mx-auto row mt-5 container gap-4 pb-5'>
                 <div className='col'>
+                    <PlusMinus label='Algae Removed from Reef' property='teleopAlgaeRemovedFromReef' />
+                </div>
+                <div className='col'>
                     <PlusMinus label='Processor Algae' property='teleopProcessorAlgae' />
                 </div>
                 <div className='col'>
