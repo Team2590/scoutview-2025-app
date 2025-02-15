@@ -41,6 +41,7 @@ export default function App() {
         if (data.scoutName == 'Aryan Gaur') alert('Hello Sigma')
         if (data.scoutName == 'Shashank Madala') alert('I will not do hack Princeton with you')
         if (data.scoutName == 'Nikhil Agrawal') alert('Hello comp sci god')
+        if (data.scoutName == 'Ahaan Khasnis') alert('Ahaan noooo!!!')
     }, [data.scoutName])
 
     return (
