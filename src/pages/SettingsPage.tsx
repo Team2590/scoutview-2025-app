@@ -175,10 +175,17 @@ export default function SettingsPage() {
                             <>
                                 {haveTeams && (
                                     <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
-                                        <input className='form-check-input' type='checkbox' role='switch' id='auto-assign' checked={autoAssignTeams} onChange={e => {
-                                            setAutoAssignTeams(e.target.checked)
-                                            if (e.target.checked) setAutoIncrementMatches(true)
-                                        }} />
+                                        <input
+                                            disabled={!usingLocalData && !compName}
+                                            className='form-check-input'
+                                            type='checkbox'
+                                            role='switch'
+                                            id='auto-assign'
+                                            checked={autoAssignTeams}
+                                            onChange={e => {
+                                                setAutoAssignTeams(e.target.checked)
+                                                if (e.target.checked) setAutoIncrementMatches(true)
+                                            }} />
                                         <label className='form-check-label' htmlFor='auto-assign'>Auto Assign Teams</label>
                                     </div>
                                 )}

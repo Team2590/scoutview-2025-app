@@ -16,9 +16,11 @@ export default function GetMatch() {
                 <TextInput property='teamNum' label='Team Number' disabled={autoAssignTeams} />
                 <TextInput property='matchNum' label='Match Number' disabled={autoIncrementMatches} />
             </div>
-            <div className='text-center'>
-                <p className='display-1 mt-5'>Your Alliance: {alliance == Alliance.RED ? 'RED!' : 'BLUE!'}</p>
-            </div>
+            {autoAssignTeams && (
+                <div className='text-center'>
+                    <p className='display-1 mt-5'>Your Alliance: {alliance == Alliance.RED ? 'RED!' : 'BLUE!'}</p>
+                </div>
+            )}
         </SectionWrapper>
     )
 }
