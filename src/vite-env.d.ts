@@ -9,6 +9,8 @@ interface Data {
     autoCoralL3: number
     autoCoralL4: number
     autoAlgaeRemovedFromReef: number
+    autoProcessorAlgae: number
+    autoNetAlgae: number
     teleopAlgaeRemovedFromReef: number
     teleopCoralL1: number
     teleopCoralL2: number

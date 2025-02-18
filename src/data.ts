@@ -12,6 +12,8 @@ export const defaultData: Data = {
     autoCoralL3: 0,
     autoCoralL4: 0,
     autoAlgaeRemovedFromReef: 0,
+    autoProcessorAlgae: 0,
+    autoNetAlgae: 0,
     teleopAlgaeRemovedFromReef: 0,
     teleopCoralL1: 0,
     teleopCoralL2: 0,

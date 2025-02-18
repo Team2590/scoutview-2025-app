@@ -46,8 +46,16 @@ export default function Autonomous() {
                     <PlusMinus label='Coral L4' property='autoCoralL4' />
                 </div>
             </div>
-            <div className='my-5'>
-                <PlusMinus label='Algae Removed from Reef' property='autoAlgaeRemovedFromReef' />
+            <div className='mx-auto row my-5 container gap-4'>
+                <div className='col'>
+                    <PlusMinus label='Algae Removed from Reef' property='autoAlgaeRemovedFromReef' />
+                </div>
+                <div className='col'>
+                    <PlusMinus label='Processor Algae' property='autoProcessorAlgae' />
+                </div>
+                <div className='col'>
+                    <PlusMinus label='Net Algae' property='autoNetAlgae' />
+                </div>
             </div>
         </SectionWrapper>
     )
