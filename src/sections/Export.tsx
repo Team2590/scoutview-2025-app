@@ -46,6 +46,7 @@ export default function Export() {
     const exportData = generateExportArray(DataSchema.parse(data))
 
     console.log(exportData)
+    console.log(JSON.stringify(exportData))
 
     return (
         <SectionWrapper label='Export'>
