@@ -34,27 +34,46 @@ export default function Autonomous() {
             </div>
             <div className='mx-auto row mt-5 container gap-4'>
                 <div className='col'>
-                    <PlusMinus label='Coral L1' property='autoCoralL1' />
+                    <div>
+                        <PlusMinus label='Coral L1' property='autoCoralL1' />
+                    </div>
+                    <div className='mt-4'>
+                        <PlusMinus label='Coral L2' property='autoCoralL2' />
+                    </div>
+                </div>
+                <div className='col d-flex justify-content-center'>
+                    <img src='reef.png' className='mt-5' />
                 </div>
                 <div className='col'>
-                    <PlusMinus label='Coral L2' property='autoCoralL2' />
+                    <div>
+                        <PlusMinus label='Coral L3' property='autoCoralL3' />
+                    </div>
+                    <div className='mt-4'>
+                        <PlusMinus label='Coral L4' property='autoCoralL4' />
+                    </div>
                 </div>
+            </div>
+            <div className='mx-auto mt-3'>
                 <div className='col'>
-                    <PlusMinus label='Coral L3' property='autoCoralL3' />
-                </div>
-                <div className='col'>
-                    <PlusMinus label='Coral L4' property='autoCoralL4' />
+                    <PlusMinus label='Algae Removed from Reef' property='autoAlgaeRemovedFromReef' />
                 </div>
             </div>
             <div className='mx-auto row my-5 container gap-4'>
                 <div className='col'>
-                    <PlusMinus label='Algae Removed from Reef' property='autoAlgaeRemovedFromReef' />
+                    <div className='d-flex justify-content-center'>
+                        <img src='processor.png' height={200} width='auto' />
+                    </div>
+                    <div className='mt-3'>
+                        <PlusMinus label='Processor Algae' property='autoProcessorAlgae' />
+                    </div>
                 </div>
                 <div className='col'>
-                    <PlusMinus label='Processor Algae' property='autoProcessorAlgae' />
-                </div>
-                <div className='col'>
-                    <PlusMinus label='Net Algae' property='autoNetAlgae' />
+                    <div className='d-flex justify-content-center'>
+                        <img src='net.png' height={200} width='auto' />
+                    </div>
+                    <div className='mt-3'>
+                        <PlusMinus label='Net Algae' property='autoNetAlgae' />
+                    </div>
                 </div>
             </div>
         </SectionWrapper>
