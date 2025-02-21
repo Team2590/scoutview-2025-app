@@ -5,7 +5,7 @@ import { z } from 'zod'
 export const defaultData: Data = {
     matchNum: '',
     teamNum: '',
-    scoutName: '',
+    scoutName: 'Blank',
     startingPos: null,
     autoCoralL1: 0,
     autoCoralL2: 0,
