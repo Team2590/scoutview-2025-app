@@ -1,4 +1,4 @@
-import { DataSchema, useAutoAssignTeams, useAutoIncrementMatches, useData, usePastData, useRobot, useTeams } from '../data'
+import { DataSchema, useAutoIncrementMatches, useData, usePastData } from '../data'
 import { defaultData } from './../data'
 import SectionWrapper from '../components/SectionWrapper'
 import QRCode from 'react-qr-code'
@@ -9,9 +9,6 @@ import { useCallback } from 'react'
 export default function Export() {
     const [data, setData] = useData()
     const [autoIncrementMatches] = useAutoIncrementMatches()
-    const [autoAssignTeams] = useAutoAssignTeams()
-    const [teams] = useTeams()
-    const [robot] = useRobot()
     const [_, add] = usePastData()
 
     const isDataEmpty = useCallback(() => {
@@ -24,14 +21,11 @@ export default function Export() {
         if (confirm('Are you sure that you want to clear?')) {
             if (!isDataEmpty()) add(data)
             if (autoIncrementMatches) {
-                const matchNum = Number(data.matchNum) + 1
-                const teamNum = autoAssignTeams ? teams[matchNum - 1][robot - 1] : ''
-                setData({
+                setData(prev => ({
                     ...defaultData,
                     scoutName: data.scoutName,
-                    matchNum,
-                    teamNum
-                })
+                    matchNum: Number(prev.matchNum) + 1,
+                }))
             } else {
                 setData({
                     ...defaultData,

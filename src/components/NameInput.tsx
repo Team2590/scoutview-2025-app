@@ -13,8 +13,8 @@ export default function NameInput() {
     return (
         <div className='input-group'>
             <span className='input-group-text'>Scout Name</span>
-            <select className='form-control' defaultValue={'Blank'} onChange={handleChange}>
-                {names.map(name => <option value={name} selected={data.scoutName == name}>{name}</option>)}
+            <select className='form-control' value={data.scoutName} onChange={handleChange}>
+                {names.map(name => <option value={name} key={name}>{name}</option>)}
             </select>
         </div>
     )

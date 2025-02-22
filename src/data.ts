@@ -5,7 +5,7 @@ import { z } from 'zod'
 export const defaultData: Data = {
     matchNum: '',
     teamNum: '',
-    scoutName: '',
+    scoutName: 'Blank',
     startingPos: null,
     autoCoralL1: 0,
     autoCoralL2: 0,
@@ -58,17 +58,19 @@ interface CompName {
     key: string
 }
 
-export const dataAtom = atomWithStorage('nemesis-data', defaultData)
-export const allianceAtom = atomWithStorage('alliance', Alliance.RED)
-export const autoIncrementMatchesAtom = atomWithStorage('auto-increment', false)
-export const localDataAtom = atomWithStorage('use-local-data', false)
-export const autoAssignTeamsAtoms = atomWithStorage('auto-assign-teams', false)
-export const teamsAtom = atomWithStorage('teams', [] as number[][])
-export const compNamesAtom = atomWithStorage('comp-names', [] as CompName[])
-export const compName = atomWithStorage('comp-name', '')
-export const robotAtom = atomWithStorage('robot', 0 as number)
-export const pastDataAtom = atomWithStorage('nemesis-past-data', [] as Data[])
-export const fieldFlippedAtom = atomWithStorage('field-flipped', false)
+const dataAtom = atomWithStorage('nemesis-data', defaultData)
+const allianceAtom = atomWithStorage('alliance', Alliance.RED)
+const autoIncrementMatchesAtom = atomWithStorage('auto-increment', false)
+const localDataAtom = atomWithStorage('use-local-data', false)
+const autoAssignTeamsAtoms = atomWithStorage('auto-assign-teams', false)
+const teamsAtom = atomWithStorage('teams', [] as number[][])
+const compNamesAtom = atomWithStorage('comp-names', [] as CompName[])
+const compName = atomWithStorage('comp-name', '')
+const robotAtom = atomWithStorage('robot', 0 as number)
+const pastDataAtom = atomWithStorage('nemesis-past-data', [] as Data[])
+const fieldFlippedAtom = atomWithStorage('field-flipped', false)
+const autoRotateTeamsAtom = atomWithStorage('auto-rotate-teams', false)
+
 export const useData = () => useAtom(dataAtom)
 export const useAlliance = () => useAtom(allianceAtom)
 export const useAutoIncrementMatches = () => useAtom(autoIncrementMatchesAtom)
@@ -94,3 +96,4 @@ export const usePastData = () => {
     return [pastData, add] as const
 }
 export const useFieldFlipped = () => useAtom(fieldFlippedAtom)
+export const useAutoRotateTeams = () => useAtom(autoRotateTeamsAtom)

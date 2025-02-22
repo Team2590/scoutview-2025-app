@@ -3,8 +3,8 @@ import PastDataPage from './pages/PastDataPage'
 import SettingsPage from './pages/SettingsPage'
 import MainPage from './pages/MainPage'
 import ErrorHandler from './components/ErrorHandler'
-import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useData, useRobot, useTeams } from './data'
-import { useEffect } from 'react'
+import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useAutoRotateTeams, useData, useRobot, useTeams } from './data'
+import { useEffect, useMemo } from 'react'
 
 const router = createHashRouter(
     createRoutesFromElements(
@@ -16,23 +16,30 @@ const router = createHashRouter(
     )
 )
 
+const getRobot = (matchNum: number, robotIndex: number, autoRotate: boolean) => autoRotate ? ((matchNum - 1) % 6) + robotIndex : robotIndex // had to use desmos to get this bruh
+
 export default function App() {
     const [data, setData] = useData()
     const [robot] = useRobot()
     const [_, setAlliance] = useAlliance()
     const [autoIncrementMatches] = useAutoIncrementMatches()
     const [autoAssignTeams] = useAutoAssignTeams()
+    const [autoRotateTeams] = useAutoRotateTeams()
     const [teams] = useTeams()
 
+    // const actualRobot = useMemo(() => getRobot(data.matchNum as number, robot, autoRotateTeams), [data.matchNum, robot, autoRotateTeams])
+
     useEffect(() => {
-        if (robot < 3) setAlliance(Alliance.RED)
+        if (getRobot(data.matchNum as number, robot, autoRotateTeams) < 3) setAlliance(Alliance.RED)
         else setAlliance(Alliance.BLUE)
     }, [data.matchNum, robot])
 
     useEffect(() => {
-        if (autoIncrementMatches == true && autoAssignTeams == true && data.matchNum != undefined && data.matchNum != '') {
+        if (autoIncrementMatches && autoAssignTeams) {
+            // console.log(actualRobot
+            console.log(getRobot(data.matchNum as number, robot, autoRotateTeams))
             setData(prev => {
-                return { ...prev, teamNum: teams[data.matchNum as number - 1][robot] }
+                return { ...prev, teamNum: teams[data.matchNum as number - 1][getRobot(data.matchNum as number, robot, autoRotateTeams)] }
             })
         }
     }, [data.matchNum])

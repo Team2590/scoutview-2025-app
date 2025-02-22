@@ -1,8 +1,7 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useCallback } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import { useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useCompName, useCompNames, useData, useFieldFlipped, useHaveTeams, useLocalData, useRobot, useTeams } from '../data'
-import { useRegisterSW } from 'virtual:pwa-register/react'
-import PlusMinus from '../components/PlusMinus'
+import { useAutoAssignTeams, useAutoIncrementMatches, useAutoRotateTeams, useCompName, useCompNames, useData, useFieldFlipped, useHaveTeams, useLocalData, useRobot, useTeams } from '../data'
+// import { useRegisterSW } from 'virtual:pwa-register/react'
 
 const fetcher = async (url: string) => {
     return fetch(url,
@@ -25,23 +24,10 @@ export default function SettingsPage() {
     const [teams, setTeams] = useTeams()
     const [robot, setRobot] = useRobot()
     const navigate = useNavigate()
-    const { updateServiceWorker } = useRegisterSW()
+    // const { updateServiceWorker } = useRegisterSW()
     const [compName, setCompName] = useCompName()
     const [fieldFlipped, setFieldFlipped] = useFieldFlipped()
-
-    useEffect(() => {
-        if (autoIncrementMatches && data.matchNum == '') {
-            setData(prev => {
-                return { ...prev, matchNum: 1 }
-            })
-        }
-        if (autoAssignTeams && data.teamNum == '') {
-            setData(prev => {
-                const matchNum = prev.matchNum || 1
-                return { ...prev, teamNum: teams[matchNum][robot] }
-            })
-        }
-    }, [autoAssignTeams, autoIncrementMatches])
+    const [autoRotateTeams, setAutoRotateTeams] = useAutoRotateTeams()
 
     const resetCount = () => {
         if (confirm('Reset match count?')) {
@@ -105,9 +91,9 @@ export default function SettingsPage() {
         if (confirm('Reset past data?')) localStorage.removeItem('nemesis-past-data')
     }
 
-    const updateApp = () => {
-        if (confirm('Update service worker?')) updateServiceWorker(true)
-    }
+    // const updateApp = () => {
+    //     if (confirm('Update service worker?')) updateServiceWorker(true)
+    // }
 
     const incrementMatchNum = () => {
         setData(prev => {
@@ -120,6 +106,24 @@ export default function SettingsPage() {
             return { ...prev, matchNum: Number(prev.matchNum) > 1 ? Number(prev.matchNum) - 1 : 1 }
         })
     }
+
+    const handleAutoIncrementMatches = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        console.log('called')
+        if (e.target.checked) {
+            if (!data.matchNum) setData(prev => ({ ...prev, matchNum: 1 }))
+            setAutoIncrementMatches(e.target.checked)
+        }
+        else {
+            setAutoAssignTeams(false)
+            setAutoIncrementMatches(false)
+        }
+    }, [])
+
+    const handleAutoAssignTeams = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+        setAutoAssignTeams(e.target.checked)
+        setAutoIncrementMatches(e.target.checked)
+        handleAutoIncrementMatches(e)
+    }, [])
 
     return (
         <>
@@ -139,7 +143,8 @@ export default function SettingsPage() {
                         </div>
                         <div className='d-flex justify-content-evenly'>
                             <button className='btn btn-tertiary mb-3' onClick={resetPastData}>Reset Past Data</button>
-                            <button className='btn btn-tertiary mb-3' onClick={updateApp}>Update SW</button>
+                            {/* <button className='btn btn-tertiary mb-3' onClick={updateApp}>Update SW</button> */}
+                            {compNames.length > 0 && <button className='btn btn-tertiary mb-3' onClick={downloadCompNames}>Update Comp Names</button>}
                         </div>
                         <div className='d-flex flex-row align-items-baseline justify-content-center gap-3'>
                             <p>Match Number: {data.matchNum}</p>
@@ -153,13 +158,7 @@ export default function SettingsPage() {
                             <label className='form-check-label' htmlFor='field-flipped'>Flip field</label>
                         </div>
                         <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
-                            <input className='form-check-input' type='checkbox' role='switch' id='auto-increment' checked={autoIncrementMatches} onChange={e => {
-                                if (e.target.checked) setAutoIncrementMatches(e.target.checked)
-                                else {
-                                    setAutoAssignTeams(false)
-                                    setAutoIncrementMatches(false)
-                                }
-                            }} />
+                            <input className='form-check-input' type='checkbox' role='switch' id='auto-increment' checked={autoIncrementMatches} onChange={handleAutoIncrementMatches} />
                             <label className='form-check-label' htmlFor='auto-increment'>Auto Increment Matches</label>
                         </div>
                         <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
@@ -182,21 +181,30 @@ export default function SettingsPage() {
                                             role='switch'
                                             id='auto-assign'
                                             checked={autoAssignTeams}
-                                            onChange={e => {
-                                                setAutoAssignTeams(e.target.checked)
-                                                if (e.target.checked) setAutoIncrementMatches(true)
-                                            }} />
+                                            onChange={handleAutoAssignTeams} />
                                         <label className='form-check-label' htmlFor='auto-assign'>Auto Assign Teams</label>
+                                    </div>
+                                )}
+                                {autoAssignTeams && (
+                                    <div className='form-check form-switch d-flex align-items-center gap-2 mb-3'>
+                                        <input
+                                            className='form-check-input'
+                                            type='checkbox'
+                                            role='switch'
+                                            id='auto-rotate'
+                                            checked={autoRotateTeams}
+                                            onChange={e => setAutoRotateTeams(e.target.checked)} />
+                                        <label className='form-check-label' htmlFor='auto-rotate'>Auto Rotate Teams</label>
                                     </div>
                                 )}
                                 {!usingLocalData && compNames != null && (
                                     <div className='input-group mb-3'>
                                         <label className='input-group-text' htmlFor='comp-select'>Comp</label>
-                                        <select className='form-select' aria-label='Select Competition' id='comp-select' defaultValue={compName} onChange={e => setComp(e.target.value)}>
-                                            <option selected>Select Competition</option>
+                                        <select className='form-select' aria-label='Select Competition' id='comp-select' value={compName} onChange={e => setComp(e.target.value)}>
+                                            <option>Select Competition</option>
                                             {compNames.map(({ name, key }: { name: string, key: string }) => {
                                                 return (
-                                                    <option value={key}>{name}</option>
+                                                    <option value={key} key={key}>{name}</option>
                                                 )
                                             })}
                                         </select>
@@ -208,8 +216,7 @@ export default function SettingsPage() {
                                 {haveTeams && (
                                     <div className='input-group'>
                                         <label htmlFor='robot-select' className='input-group-text'>Robot</label>
-                                        <select className='form-select' id='robot-select' aria-label='Select Robot' defaultValue={robot} style={{ width: 'fit-content' }} onChange={e => setRobot(Number(e.target.value))}>
-                                            <option selected>Select Robot</option>
+                                        <select className='form-select' id='robot-select' aria-label='Select Robot' value={robot} style={{ width: 'fit-content' }} onChange={e => setRobot(Number(e.target.value))}>
                                             <option value={0}>Red Robot 1</option>
                                             <option value={1}>Red Robot 2</option>
                                             <option value={2}>Red Robot 3</option>

@@ -5,7 +5,7 @@ import Endgame from '../sections/Endgame'
 import Export from '../sections/Export'
 
 export default function MainPage() {
-    // const [data] = useAtom(dataAtom)
+    // const [data] = useData()
 
     // useEffect(() => {
     //     console.log(data)
