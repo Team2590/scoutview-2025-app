@@ -16,7 +16,7 @@ const router = createHashRouter(
     )
 )
 
-const getRobot = (matchNum: number, robotIndex: number, autoRotate: boolean) => autoRotate ? ((matchNum - 1) % 6) + robotIndex : robotIndex // had to use desmos to get this bruh
+const getRobot = (matchNum: number, robotIndex: number, autoRotate: boolean) => autoRotate ? ((matchNum - 1) % 6) + robotIndex : robotIndex
 
 export default function App() {
     const [data, setData] = useData()
@@ -27,19 +27,17 @@ export default function App() {
     const [autoRotateTeams] = useAutoRotateTeams()
     const [teams] = useTeams()
 
-    // const actualRobot = useMemo(() => getRobot(data.matchNum as number, robot, autoRotateTeams), [data.matchNum, robot, autoRotateTeams])
+    const actualRobot = useMemo(() => getRobot(data.matchNum as number, robot, autoRotateTeams), [data.matchNum, robot, autoRotateTeams])
 
     useEffect(() => {
-        if (getRobot(data.matchNum as number, robot, autoRotateTeams) < 3) setAlliance(Alliance.RED)
+        if (actualRobot < 3) setAlliance(Alliance.RED)
         else setAlliance(Alliance.BLUE)
     }, [data.matchNum, robot])
 
     useEffect(() => {
         if (autoIncrementMatches && autoAssignTeams) {
-            // console.log(actualRobot
-            console.log(getRobot(data.matchNum as number, robot, autoRotateTeams))
             setData(prev => {
-                return { ...prev, teamNum: teams[data.matchNum as number - 1][getRobot(data.matchNum as number, robot, autoRotateTeams)] }
+                return { ...prev, teamNum: teams[data.matchNum as number - 1][actualRobot] }
             })
         }
     }, [data.matchNum])
