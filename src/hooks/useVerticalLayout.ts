@@ -4,7 +4,7 @@ export const useVerticalLayout = () => {
     const [cols, setCols] = useState(true)
 
     const handle = useCallback(() => {
-        if (window.innerWidth < 600) {
+        if (window.innerWidth < 720) {
             setCols(true)
         } else {
             setCols(false)
