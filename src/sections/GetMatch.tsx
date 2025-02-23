@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import SectionWrapper from '../components/SectionWrapper'
-import TextInput from '../components/TextInput'
-import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches, useData, useRobot, useTeams } from '../data'
+import { Alliance, useAlliance, useAutoAssignTeams, useAutoIncrementMatches } from '../data'
 import NameInput from '../components/NameInput'
+import NumberInput from '../components/NumberInput'
 
 export default function GetMatch() {
     const [alliance] = useAlliance()
@@ -13,8 +12,8 @@ export default function GetMatch() {
         <SectionWrapper label='Get Match'>
             <div className='d-flex flex-column gap-4 mx-auto mt-5 container'>
                 <NameInput />
-                <TextInput property='teamNum' label='Team Number' disabled={autoAssignTeams} />
-                <TextInput property='matchNum' label='Match Number' disabled={autoIncrementMatches} />
+                <NumberInput property='teamNum' label='Team Number' disabled={autoAssignTeams} />
+                <NumberInput property='matchNum' label='Match Number' disabled={autoIncrementMatches} />
             </div>
             {autoAssignTeams && (
                 <div className='text-center'>
