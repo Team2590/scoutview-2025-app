@@ -47,6 +47,7 @@ export default function App() {
         if (data.scoutName == 'Shashank Madala') alert('I will not do hack Princeton with you')
         if (data.scoutName == 'Nikhil Agrawal') alert('Hello comp sci god')
         if (data.scoutName == 'Ahaan Khasnis') alert('Ahaan noooo!!!')
+        if (data.scoutName == 'Ayur Munipalli') alert('Hello best Nemesis member, my idol, my favorite member, and proud daddy of Shashank Madala')
     }, [data.scoutName])
 
     return (
