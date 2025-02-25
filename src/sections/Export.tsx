@@ -23,16 +23,16 @@ export default function Export() {
             if (autoIncrementMatches) {
                 setData(prev => ({
                     ...defaultData,
-                    scoutName: data.scoutName,
+                    scoutName: prev.scoutName,
                     matchNum: Number(prev.matchNum) + 1,
                 }))
             } else {
-                setData({
+                setData(prev => ({
                     ...defaultData,
-                    scoutName: data.scoutName,
+                    scoutName: prev.scoutName,
                     matchNum: '',
                     teamNum: ''
-                })
+                }))
             }
         }
     }, [])
