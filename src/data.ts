@@ -22,7 +22,7 @@ export const defaultData: Data = {
     teleopProcessorAlgae: 0,
     teleopNetAlgae: 0,
     timeTakenToClimb: 0,
-    lostComms: false
+    lostComms: null
 }
 
 export const DataSchema = z.object({
@@ -45,7 +45,7 @@ export const DataSchema = z.object({
     teleopProcessorAlgae: z.coerce.number(),
     teleopNetAlgae: z.coerce.number(),
     timeTakenToClimb: z.coerce.number(),
-    lostComms: z.coerce.boolean(),
+    lostComms: z.union([z.null(), z.boolean()]).default(null),
 })
 
 export enum Alliance {

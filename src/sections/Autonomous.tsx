@@ -18,10 +18,10 @@ export default function Autonomous() {
                     <div className='mx-auto row mt-5 container gap-4'>
                         <div className='col'>
                             <div>
-                                <PlusMinus label='Coral L1' property='autoCoralL1' />
+                                <PlusMinus label='Auto Coral L1' property='autoCoralL1' />
                             </div>
                             <div className='mt-4'>
-                                <PlusMinus label='Coral L2' property='autoCoralL2' />
+                                <PlusMinus label='Auto Coral L2' property='autoCoralL2' />
                             </div>
                         </div>
                         <div className='col d-flex justify-content-center'>
@@ -29,10 +29,10 @@ export default function Autonomous() {
                         </div>
                         <div className='col'>
                             <div>
-                                <PlusMinus label='Coral L3' property='autoCoralL3' />
+                                <PlusMinus label='Auto Coral L3' property='autoCoralL3' />
                             </div>
                             <div className='mt-4'>
-                                <PlusMinus label='Coral L4' property='autoCoralL4' />
+                                <PlusMinus label='Auto Coral L4' property='autoCoralL4' />
                             </div>
                         </div>
                     </div>
@@ -44,18 +44,18 @@ export default function Autonomous() {
                         <div className='mx-auto row mt-5 container gap-4'>
                             <div className='col'>
                                 <div>
-                                    <PlusMinus label='Coral L1' property='autoCoralL1' />
+                                    <PlusMinus label='Auto Coral L1' property='autoCoralL1' />
                                 </div>
                                 <div className='mt-4'>
-                                    <PlusMinus label='Coral L2' property='autoCoralL2' />
+                                    <PlusMinus label='Auto Coral L2' property='autoCoralL2' />
                                 </div>
                             </div>
                             <div className='col'>
                                 <div>
-                                    <PlusMinus label='Coral L3' property='autoCoralL3' />
+                                    <PlusMinus label='Auto Coral L3' property='autoCoralL3' />
                                 </div>
                                 <div className='mt-4'>
-                                    <PlusMinus label='Coral L4' property='autoCoralL4' />
+                                    <PlusMinus label='Auto Coral L4' property='autoCoralL4' />
                                 </div>
                             </div>
                         </div>
@@ -63,7 +63,7 @@ export default function Autonomous() {
                 )
             }
             <div className='mx-auto mt-3'>
-                <PlusMinus label='Algae Removed from Reef' property='autoAlgaeRemovedFromReef' />
+                <PlusMinus label='Auto Algae Removed from Reef' property='autoAlgaeRemovedFromReef' />
             </div>
             {!vertical ? (
                 <div className='mx-auto row my-5 container gap-4'>
@@ -72,7 +72,7 @@ export default function Autonomous() {
                             <img src='processor.png' height={200} width='auto' />
                         </div>
                         <div className='mt-3'>
-                            <PlusMinus label='Processor Algae' property='autoProcessorAlgae' />
+                            <PlusMinus label='Auto Processor Algae' property='autoProcessorAlgae' />
                         </div>
                     </div>
                     <div className='col'>
@@ -80,7 +80,7 @@ export default function Autonomous() {
                             <img src='net.png' height={200} width='auto' />
                         </div>
                         <div className='mt-3'>
-                            <PlusMinus label='Net Algae' property='autoNetAlgae' />
+                            <PlusMinus label='Auto Net Algae' property='autoNetAlgae' />
                         </div>
                     </div>
                 </div>
@@ -91,7 +91,7 @@ export default function Autonomous() {
                             <img src='processor.png' height={200} width='auto' />
                         </div>
                         <div className='col mt-3'>
-                            <PlusMinus label='Processor Algae' property='autoProcessorAlgae' />
+                            <PlusMinus label='Auto Processor Algae' property='autoProcessorAlgae' />
                         </div>
                     </div>
                     <div className='row mt-5'>
@@ -99,7 +99,7 @@ export default function Autonomous() {
                             <img src='net.png' height={190} width='auto' />
                         </div>
                         <div className='col mt-3'>
-                            <PlusMinus label='Net Algae' property='autoNetAlgae' />
+                            <PlusMinus label='Auto Net Algae' property='autoNetAlgae' />
                         </div>
                     </div>
                 </div>

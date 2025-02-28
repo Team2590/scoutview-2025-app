@@ -19,5 +19,5 @@ interface Data {
     teleopProcessorAlgae: number
     teleopNetAlgae: number
     timeTakenToClimb: number
-    lostComms: boolean
+    lostComms: boolean | null
 }

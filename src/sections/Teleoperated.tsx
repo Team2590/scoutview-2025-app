@@ -12,10 +12,10 @@ export default function Teleoperated() {
                     <div className='mx-auto row mt-5 container gap-4'>
                         <div className='col'>
                             <div>
-                                <PlusMinus label='Coral L1' property='teleopCoralL1' />
+                                <PlusMinus label='Teleop Coral L1' property='teleopCoralL1' />
                             </div>
                             <div className='mt-4'>
-                                <PlusMinus label='Coral L2' property='teleopCoralL2' />
+                                <PlusMinus label='Teleop Coral L2' property='teleopCoralL2' />
                             </div>
                         </div>
                         <div className='col d-flex justify-content-center'>
@@ -23,10 +23,10 @@ export default function Teleoperated() {
                         </div>
                         <div className='col'>
                             <div>
-                                <PlusMinus label='Coral L3' property='teleopCoralL3' />
+                                <PlusMinus label='Teleop Coral L3' property='teleopCoralL3' />
                             </div>
                             <div className='mt-4'>
-                                <PlusMinus label='Coral L4' property='teleopCoralL4' />
+                                <PlusMinus label='Teleop Coral L4' property='teleopCoralL4' />
                             </div>
                         </div>
                     </div>
@@ -38,18 +38,18 @@ export default function Teleoperated() {
                         <div className='mx-auto row mt-5 container gap-4'>
                             <div className='col'>
                                 <div>
-                                    <PlusMinus label='Coral L1' property='teleopCoralL1' />
+                                    <PlusMinus label='Teleop Coral L1' property='teleopCoralL1' />
                                 </div>
                                 <div className='mt-4'>
-                                    <PlusMinus label='Coral L2' property='teleopCoralL2' />
+                                    <PlusMinus label='Teleop Coral L2' property='teleopCoralL2' />
                                 </div>
                             </div>
                             <div className='col'>
                                 <div>
-                                    <PlusMinus label='Coral L3' property='teleopCoralL3' />
+                                    <PlusMinus label='Teleop Coral L3' property='teleopCoralL3' />
                                 </div>
                                 <div className='mt-4'>
-                                    <PlusMinus label='Coral L4' property='teleopCoralL4' />
+                                    <PlusMinus label='Teleop Coral L4' property='teleopCoralL4' />
                                 </div>
                             </div>
                         </div>
@@ -57,7 +57,7 @@ export default function Teleoperated() {
                 )
             }
             <div className='mx-auto mt-3'>
-                <PlusMinus label='Algae Removed from Reef' property='teleopAlgaeRemovedFromReef' />
+                <PlusMinus label='Teleop Algae Removed from Reef' property='teleopAlgaeRemovedFromReef' />
             </div>
             {!vertical ? (
                 <div className='mx-auto row my-5 container gap-4'>
@@ -66,7 +66,7 @@ export default function Teleoperated() {
                             <img src='processor.png' height={200} width='auto' />
                         </div>
                         <div className='mt-3'>
-                            <PlusMinus label='Processor Algae' property='teleopProcessorAlgae' />
+                            <PlusMinus label='Teleop Processor Algae' property='teleopProcessorAlgae' />
                         </div>
                     </div>
                     <div className='col'>
@@ -74,7 +74,7 @@ export default function Teleoperated() {
                             <img src='net.png' height={200} width='auto' />
                         </div>
                         <div className='mt-3'>
-                            <PlusMinus label='Net Algae' property='teleopNetAlgae' />
+                            <PlusMinus label='Teleop Net Algae' property='teleopNetAlgae' />
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@ export default function Teleoperated() {
                             <img src='processor.png' height={200} width='auto' />
                         </div>
                         <div className='col mt-3'>
-                            <PlusMinus label='Processor Algae' property='teleopProcessorAlgae' />
+                            <PlusMinus label='Teleop Processor Algae' property='teleopProcessorAlgae' />
                         </div>
                     </div>
                     <div className='row mt-5'>
@@ -93,7 +93,7 @@ export default function Teleoperated() {
                             <img src='net.png' height={190} width='auto' />
                         </div>
                         <div className='col mt-3'>
-                            <PlusMinus label='Net Algae' property='teleopNetAlgae' />
+                            <PlusMinus label='Teleop Net Algae' property='teleopNetAlgae' />
                         </div>
                     </div>
                 </div>
