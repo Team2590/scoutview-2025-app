@@ -4,22 +4,15 @@ import SectionWrapper from '../components/SectionWrapper'
 import QRCode from 'react-qr-code'
 import CheckData from '../components/CheckData'
 import { generateExportArray } from '../util/generateExportArray'
-import { useCallback } from 'react'
 
 export default function Export() {
     const [data, setData] = useData()
     const [autoIncrementMatches] = useAutoIncrementMatches()
-    const [_, add] = usePastData()
+    const [_, addPastData] = usePastData()
 
-    const isDataEmpty = useCallback(() => {
-        return Object.keys(data).every((key) => {
-            return data[key as keyof Data] == defaultData[key as keyof Data]
-        })
-    }, [])
-
-    const resetData = useCallback(() => {
+    const resetData = () => {
         if (confirm('Are you sure that you want to clear?')) {
-            if (!isDataEmpty()) add(data)
+            addPastData(data)
             if (autoIncrementMatches) {
                 setData(prev => ({
                     ...defaultData,
@@ -34,8 +27,9 @@ export default function Export() {
                     teamNum: ''
                 }))
             }
+            window.scrollTo({ top: 0, behavior: 'smooth' })
         }
-    }, [])
+    }
 
     const exportData = generateExportArray(DataSchema.parse(data))
 

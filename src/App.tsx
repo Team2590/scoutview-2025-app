@@ -16,7 +16,7 @@ const router = createHashRouter(
     )
 )
 
-const getRobot = (matchNum: number, robotIndex: number, autoRotate: boolean) => autoRotate ? ((matchNum - 1) % 6) + robotIndex : robotIndex
+const getRobot = (matchNum: number, robotIndex: number, autoRotate: boolean) => autoRotate ? ((matchNum - 1 + robotIndex) % 6)  : robotIndex
 
 export default function App() {
     const [data, setData] = useData()

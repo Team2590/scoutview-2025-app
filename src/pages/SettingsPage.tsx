@@ -55,7 +55,7 @@ export default function SettingsPage() {
         if (!navigator.onLine) return alert('You are not connected to the internet')
 
         if (confirm('Download the competition names?')) {
-            const data = await fetcher('https://www.thebluealliance.com/api/v3/team/frc2590/events/2024') as any[]
+            const data = await fetcher('https://www.thebluealliance.com/api/v3/team/frc2590/events/2025') as any[]
             const simplified = data.map(({ name, key }) => {
                 return { name, key }
             })
