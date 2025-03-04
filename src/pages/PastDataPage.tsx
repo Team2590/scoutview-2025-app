@@ -12,7 +12,7 @@ export default function PastDataPage() {
                 <Link to='/' className='text-decoration-none'> &#8592; Back</Link>
             </div>
             <div className='d-flex flex-column'>
-                {pastData.reverse().map((data: Data) => {
+                {[...pastData].reverse().map((data: Data) => {
                     return (
                         <>
                             <div className='mx-auto my-3'>
