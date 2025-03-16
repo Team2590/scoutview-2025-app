@@ -86,8 +86,7 @@ export const usePastData = () => {
 
     const add = (data: Data) => {
         if (pastData.length >= 5) {
-            const newData = [...pastData.slice(0, 4), data]
-            setPastData(newData)
+            setPastData([...pastData].slice(1).concat(data))
         } else {
             setPastData(prev => [...prev, data])
         }
